@@ -1,0 +1,326 @@
+% OBS! Detta är inte en officiell examensmall
+% OBS! Detta är inte en officiell examensmall
+
+% Baserad på 
+% http://hj.se/jth/student/mina-studier/blanketter-och-instruktioner.html
+
+% OBS! Detta är inte en officiell examensmall
+% OBS! Detta är inte en officiell examensmall
+
+\documentclass[12pt,a4paper]{article}
+% Article duger till allt som inte har kapitel.
+% LaTeX justerar radlängden automatiskt för att det ska bli
+% lätt att läsa, vilket kan leda till allt för stora marginaler om man
+% inte väljer teckenstorlek 12pt. Alternativt kan man ha dubbla
+% kolumner.
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% För riktiga å, ä och ö:
+% Den första säger att dokumentet är kodat som UTF-8.
+% Den andra säger att vi ska använda fonter som är speciellt anpassade
+% för Västeuropeiska språk, bland annat kommer prickarna över "ö" lite
+% närmare o:et.
+% Det räcker ofta, men inte alltid, att bara ange den senare. Det bör
+% räcka att bara ange den första, men blir inte _fullt_ så snyggt.
+
+\usepackage[swedish,english]{babel}
+% Svensk avstavning (om den är installerad) och svenska rubriker på
+% sådant som LaTeX lägger till: ,
+% innehållsförteckning...
+
+\newenvironment{poliabstract}[1]
+  {\renewcommand{\abstractname}{#1}\begin{abstract}}
+  {\end{abstract}}
+% Eftersom rapporten skall innehålla engelsk sammanfattning också.
+
+\usepackage{amsmath}
+% AMS är the American Mathematical Society. De har egna
+% LaTeX-kommandon. De är bra, och jag har ingen koll på vilka
+% kommandon jag använder som kommer från LaTeX och vilka som kommer
+% från AMS, så jag har alltid med den.
+
+\usepackage{ae}
+% När du gör PDF-filer för publicering på Internet eller för att
+% skicka via e-post, bör du använda Type1-fonter (typsnitt). LaTeX
+% använder vanligen bitmapfonter, som ger utmärkt resultat i skrivare,
+% men bedrövligt på skärm. Med ae får du fonter med samma utseende som
+% ordinarie LaTeX, men som också fungerar på bildskärmar. PDF-filer
+% skapar du sedan genom att skriva "dvipdf filnamn" efter att ha kört
+% LaTeX för att få fram en "filnamn.dvi".
+%    Det finns ingen garanti för att alla fonter du använder finns med
+% i ae, och de som inte finns kommer i regel få vanliga bitmapfonter
+% istället. Men det rör sig då om enstaka stycken - kanske
+% sammanfattningen du gjort med "abstract" till exempel - eller någon
+% enstaka variabel. Det mesta blir bra.
+
+\usepackage{listings}
+% tillåter att formatera kod
+
+\lstset{literate=%
+{Ö}{{\"O}}1
+{Ø}{{\O}}1
+{Ä}{{\"A}}1
+{Å}{{\AA}}1
+{Ü}{{\"U}}1
+{ß}{{\ss}}2
+{ü}{{\"u}}1
+{ä}{{\"a}}1
+{å}{{\aa}}1
+{ö}{{\"o}}1
+{ø}{{\o}}1
+{æ}{{\ae}}1
+{Æ}{{\AE}}1
+}
+% Fixar så att åäö och andra tecken fungerar att använda i kodfiler 
+
+\renewcommand\appendix{\par
+  \setcounter{section}{0}
+  \setcounter{subsection}{0}
+  \setcounter{figure}{0}
+  \setcounter{table}{0}
+  \renewcommand\thesection{Bilaga \Alph{section}}
+  \renewcommand\thefigure{\Alph{section}\arabic{figure}}
+}
+%Lägger till rubriker för Bilagorna
+
+
+\usepackage{units}
+% Enheter ska skrivas i upprätt stil med seriffer, och separeras från
+% föregående siffror med ett tunt mellanslag - tunnare än ett
+% vanligt. Använd i texten/matteläget som: \unit[1,34]{m}
+
+\usepackage{icomma}
+% I icke-engelsk skrift används decimalkomma, i engelsk är kommatecken
+% i matteläge enbart en koordinatavskiljare. Därför sätter LaTeX i
+% vanliga fall automatiskt in ett extra mellanslag efter alla
+% kommatecken i matteläge. Detta kommando ger ett intelligent
+% kommatecken som förstår om det är decimalavskiljare eller
+% koordinatavskiljare, beroende på om det står något mellanslag
+% efter. Använd aldrig decimalpunkt i icke-engelsk skrift.
+
+\usepackage{color}
+\usepackage{graphicx}
+
+% Dessa behövs när man inkluderar figurer från xfig, i
+% latex+postscript format (brukar bli snyggast). Använder man vanliga
+% eps-figurer behöver man inte color-paketet. Det finns både paketet
+% "graphics" och "graphicx", med något olika syntax. Om alla bilder
+% har rätt storlek när man importerar dem behöver man inte bry sig om
+% skillnaderna.
+
+
+\usepackage{bbm}
+\newcommand{\N}{\ensuremath{\mathbbm{N}}}
+\newcommand{\Z}{\ensuremath{\mathbbm{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbbm{Q}}}
+\newcommand{\R}{\ensuremath{\mathbbm{R}}}
+\newcommand{\C}{\ensuremath{\mathbbm{C}}}
+% Här hittar jag på nya kommandon för att beteckna mängden av de
+% naturliga talen, heltalen, de rationella, de reella och de
+% komplexa. Vill man ha en annan font kan man i stället använda
+% \mathbb{N} och så vidare, men måste då inkludera följande rad:
+
+\usepackage{amssymb}
+\graphicspath{}
+\newcommand{\rd}{\ensuremath{\mathrm{d}}}
+\newcommand{\id}{\ensuremath{\,\rd}}
+% \rd står för rakt d, \id står för integral-d. Anledningen är att man
+% ska kunna skilja på d som en variabel (diameter, avstånd) och d som
+% en operator. I derivator och integraler ska d:et stå upprätt, och i
+% integraler också med ett litet mellanrum mellan d och föregående
+% uttryck.
+
+\setlength\parindent{0pt}
+%Tar bort intendering vid ny paragraf
+
+\usepackage{fancyhdr}
+% Detta paket gör att det går att header och footer med, vilket krävs för att hålla sig efter den officiella mallen. 
+
+\usepackage{makeidx}
+% Index för uppslagsord, vill du lägga till ett ord i saklistan måste du använda dig av \index{} med ordet innanför "måsvingarna".
+% Exempel: Flygande bäckasiner \index{bäckasiner} söka hwila på mjuka tuvor.
+
+
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}
+% För att göra texen mer lättläst och avdelad så läggs alltid en ny huvudrubrik (section) på en helt ny sida.
+
+
+
+
+\newcommand{\blankpage}{
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+}
+% Vissa sidor skall vara tomma eftersom att rapporten kommer att vara utskriven dubbelsidigt. för att skapa en helt tom sida anropas det med \blankpage 
+% Det medför en helt tom sida som inte har någon header eller footer.
+
+\usepackage{rotating}
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{-}
+\usepackage[absolute]{textpos}
+% Varje gång du genererar ett dokument kommer dagens datum att tas fram
+
+
+\usepackage[backend=bibtex,
+style=numeric
+%style=alphabetic
+%style=reading
+]{biblatex}
+\addbibresource{referenser}
+% Möjlighet att skapa refernslista, med hjälp av BibTex-formatet.
+
+\makeindex
+% Innan dokumentet börjar måste vi starta igång makeindex så den har möjlighet att söka igenom dokumentet på sakord innan saklistan genereras i slutet av dokumentet.
+
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+
+
+\includegraphics[width=12.2 cm]{Bilder/JTH_cmyk_B-eps-converted-to.pdf}
+\vfill
+\textbf{\LARGE  Titel på examensarbetet \\ på två rader}
+\vfill
+%
+%   Titeln på ditt examensarbete
+%
+
+\text{\Large Dittnamn Efternamn}
+%
+%  ÄNDRA TILL DITT NAMN
+%
+\vfill
+\textsc{\Huge Examensarbete \the\year }\\[0.5cm]
+\text{\Huge Programmet }
+%
+%  ÄNDRA TILL DET PROGRAMMET DU LÄSER PÅ
+%
+
+
+
+
+\blankpage
+% Lämna en sida tom
+
+\includegraphics[width=12.2 cm]{Bilder/JTH_cmyk_B-eps-converted-to.pdf}
+\vfill
+\textbf{\LARGE  Titel på examensarbetet \\ på två rader}\\[0.6cm]
+%
+%   Titeln på ditt examensarbete
+%
+
+\textbf{\large  English title on one row}
+%
+%   Den engelska titeln på ditt examensarbete
+%
+\vfill
+\text{\Large Dittnamn Efternamn}
+\end{center}
+\vfill
+%
+%  ÄNDRA TILL DITT NAMN
+%
+
+\normalsize Detta examensarbete är utfört vid Tekniska Högskolan i Jönköping inom ämnesområdet
+Programmet. Arbetet är ett led i den treåriga högskoleingenjörsutbildningen. Författaren svarar själv för framförda åsiktet, slutsatser och resultat.\\[0.4cm]
+\text{\normalsize Handledare: Namn Efternamn }\\[0.4cm]
+\text{\normalsize Omfattning: 10 Poäng (C-nivå) }\\[0.4cm]
+\text{\normalsize Datum: \the\day  \ \monthname  \ \the\year }\\[0.4cm]
+\text{\normalsize Arkiveringsnummer: }\\[0.4cm]
+
+
+\pagestyle{fancy}
+
+
+\let\Sectionmark\sectionmark
+\def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+% Skriver ut överstanivån av sektion på varje sida
+
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lfoot{Postadress:\\ Box 1026 \\ 551 11 Jönköping}
+\cfoot{Besöksadress:\\ Gjuterigatan 5}
+\rfoot{Telefon: \\ 036-10 10 00 (vx)}
+\pagebreak
+
+
+
+
+
+
+\renewcommand{\headrulewidth}{0.4pt}
+\lfoot{}
+\cfoot{ \thepage }
+\rfoot{}
+\pagenumbering{roman}
+\blankpage
+
+\fancyfoot[C]{}
+%%\chead{Abstract}
+\chead{\textit Abstract }
+\selectlanguage{english}
+\begin{poliabstract}{Abstract} 
+\input{abstract.tex}
+\end{poliabstract}
+
+\blankpage
+
+%%\chead{Sammanfattning}
+\chead{ \textit Sammanfattning }
+\selectlanguage{swedish}
+\begin{poliabstract}{Sammanfattning}
+\input{sammanfattning.tex}
+\end{poliabstract}
+\vfill
+{\bf Keywords:} 
+\input{keywords.tex}
+
+\blankpage
+\newpage
+\tableofcontents
+
+
+
+\fancyhead[L]{}
+\fancyhead[C]{\textit \Sectionname}
+\fancyhead[R]{}
+
+\fancyfoot[C]{\thepage}
+
+%\usepackage{titlesec}
+
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\input{inledning.tex}
+
+
+\input{teoretisk_bakgrund.tex}
+
+\input{metod_genomforande.tex}
+
+\input{resultat.tex}
+
+\input{diskusion.tex}
+
+\newpage
+
+
+\addcontentsline{toc}{section}{Referenser}
+\printbibliography
+
+\printindex
+\addcontentsline{toc}{section}{Sakregister}
+
+
+\appendix
+\input{bilagor.tex}
+
+
+
+\end{document}
