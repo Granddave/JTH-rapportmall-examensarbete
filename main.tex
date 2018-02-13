@@ -1,11 +1,18 @@
-% OBS! Detta är inte en officiell examensmall
-% OBS! Detta är inte en officiell examensmall
+%%% OBS! Detta är inte en officiell examensmall %%%
+%%% OBS! Detta är inte en officiell examensmall %%%
+%
+% Orginalrepo av Anders Linden:  https://github.com/Anders-Linden/JTH-rapportmall-examensarbete
+%
+% Uppdaterad av David Isaksson 2018:
+% https://github.com/Granddave/JTH-rapportmall-examensarbete
+%
+% Baserad på följande docx (Hämtad 2018-13-02)
+% http://ju.se/download/18.448e5a1414f64cc6e183ea5e/1441623803036/Mall+f%C3%B6r+examensarbete.dotx
+% Hämtad från http://ju.se/student/studier/examensarbete-uppsats.html
+%
+%%% OBS! Detta är inte en officiell examensmall %%%
+%%% OBS! Detta är inte en officiell examensmall %%%
 
-% Baserad på 
-% http://hj.se/jth/student/mina-studier/blanketter-och-instruktioner.html
-
-% OBS! Detta är inte en officiell examensmall
-% OBS! Detta är inte en officiell examensmall
 
 \documentclass[12pt,a4paper]{article}
 % Article duger till allt som inte har kapitel.
@@ -82,7 +89,7 @@
   \renewcommand\thesection{Bilaga \Alph{section}}
   \renewcommand\thefigure{\Alph{section}\arabic{figure}}
 }
-%Lägger till rubriker för Bilagorna
+% Lägger till rubriker för Bilagorna
 
 
 \usepackage{units}
@@ -101,7 +108,6 @@
 
 \usepackage{color}
 \usepackage{graphicx}
-
 % Dessa behövs när man inkluderar figurer från xfig, i
 % latex+postscript format (brukar bli snyggast). Använder man vanliga
 % eps-figurer behöver man inte color-paketet. Det finns både paketet
@@ -132,7 +138,7 @@
 % uttryck.
 
 \setlength\parindent{0pt}
-%Tar bort intendering vid ny paragraf
+% Tar bort indentering vid ny paragraf
 
 \usepackage{fancyhdr}
 % Detta paket gör att det går att header och footer med, vilket krävs för att hålla sig efter den officiella mallen. 
@@ -178,119 +184,91 @@ style=numeric
 
 \begin{document}
 \pagestyle{empty}
-\begin{center}
 
-
-\includegraphics[width=12.2 cm]{Bilder/JTH_cmyk_B-eps-converted-to.pdf}
+\includegraphics[width=6 cm]{Bilder/JU_logga_stor.jpg}
 \vfill
-\textbf{\LARGE  Titel på examensarbetet \\ på två rader}
+
+% Titeln på ditt examensarbete
+\textbf{\LARGE \textcolor{red}{Titel på examensarbetet \\ på två rader} }
+\\[0.6cm]
+
+% Undertitel
+\textbf{\large \textcolor{red}{Undertitel på en eller\\flera rader} }
 \vfill
-%
-%   Titeln på ditt examensarbete
-%
-
-\text{\Large Dittnamn Efternamn}
-%
-%  ÄNDRA TILL DITT NAMN
-%
-\vfill
-\textsc{\Huge Examensarbete \the\year }\\[0.5cm]
-\text{\Huge Programmet }
-%
-%  ÄNDRA TILL DET PROGRAMMET DU LÄSER PÅ
-%
 
 
+\textbf{Huvudområde:} \textit{\textcolor{red}{Ämne} } \\
+\textbf{Författare:} \textit{\textcolor{red}{Förnamn Efternamn} }\\
+\textbf{Handledare:} \textit{\textcolor{red}{Förnamn Efternamn} }\\
+\textbf{Jönköping} \textcolor{red}{År Månad} % Todo: Fixa så ej hårdkodat
 
 
-\blankpage
-% Lämna en sida tom
-
-\includegraphics[width=12.2 cm]{Bilder/JTH_cmyk_B-eps-converted-to.pdf}
-\vfill
-\textbf{\LARGE  Titel på examensarbetet \\ på två rader}\\[0.6cm]
-%
-%   Titeln på ditt examensarbete
-%
-
-\textbf{\large  English title on one row}
-%
-%   Den engelska titeln på ditt examensarbete
-%
-\vfill
-\text{\Large Dittnamn Efternamn}
-\end{center}
-\vfill
-%
-%  ÄNDRA TILL DITT NAMN
-%
-
-\normalsize Detta examensarbete är utfört vid Tekniska Högskolan i Jönköping inom ämnesområdet
-Programmet. Arbetet är ett led i den treåriga högskoleingenjörsutbildningen. Författaren svarar själv för framförda åsikter, slutsatser och resultat.\\[0.4cm]
-\text{\normalsize Handledare: Namn Efternamn }\\[0.4cm]
-\text{\normalsize Omfattning: 10 Poäng (C-nivå) }\\[0.4cm]
-\text{\normalsize Datum: \the\day  \ \monthname  \ \the\year }\\[0.4cm]
-\text{\normalsize Arkiveringsnummer: }\\[0.4cm]
-
-
+%%%% Sida två %%%%
+\newpage
 \pagestyle{fancy}
 
+
+\vspace*{\fill}
+
+Detta examensarbete är utfört vid Tekniska Högskolan i Jönköping inom [se huvudområde på föregående sida]. Författarna svarar själva för framförda åsikter, slutsatser och resultat.\\
+\begin{tabular}{@{}ll}
+Examinator: & \textcolor{red}{Förnamn Efternamn} \\
+Handledare: & \textcolor{red}{Förnamn Efternamn} \\
+Omfattning: & \textcolor{red}{7,5 hp eller 9 hp (grundnivå), 15 hp (grundnivå), 30 hp (avancerad nivå)} \\
+Datum:      & \today
+\end{tabular}
 
 \let\Sectionmark\sectionmark
 \def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
 % Skriver ut överstanivån av sektion på varje sida
-
 
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \lfoot{Postadress:\\ Box 1026 \\ 551 11 Jönköping}
 \cfoot{Besöksadress:\\ Gjuterigatan 5}
 \rfoot{Telefon: \\ 036-10 10 00 (vx)}
+
 \pagebreak
 
 
 
 
-
-
 \renewcommand{\headrulewidth}{0.4pt}
+
 \lfoot{}
-\cfoot{ \thepage }
+\cfoot{\thepage}
 \rfoot{}
 \pagenumbering{roman}
-\blankpage
 
-\fancyfoot[C]{}
+%\fancyfoot[C]{}
 %%\chead{Abstract}
 \chead{\textit Abstract }
-\selectlanguage{english}
-\begin{poliabstract}{Abstract} 
+%\selectlanguage{english}
+%\begin{poliabstract}{Abstract} 
+\textbf{\large{Abstract}}\\
 \input{abstract.tex}
-\end{poliabstract}
+%\end{poliabstract}
 
-\blankpage
+\newpage%\blankpage
 
 %%\chead{Sammanfattning}
-\chead{ \textit Sammanfattning }
+%\chead{ \textit Sammanfattning }
 \selectlanguage{swedish}
-\begin{poliabstract}{Sammanfattning}
+%\begin{poliabstract}{Sammanfattning}
+\textbf{\large{Sammanfattning}}\\
 \input{sammanfattning.tex}
-\end{poliabstract}
-\vfill
-{\bf Keywords:} 
-\input{keywords.tex}
+%\end{poliabstract}
 
-\blankpage
-\newpage
+\newpage%\blankpage
+
 \lhead{ }
 \chead{ \textit {Innehållsförteckning}}
 \rhead{ }
 \tableofcontents
-\blankpage
+\newpage%\blankpage
 
-\blankpage
+
 \newpage
-
 
 \fancyhead[L]{}
 \fancyhead[C]{\textit \Sectionname}
@@ -304,7 +282,6 @@ Programmet. Arbetet är ett led i den treåriga högskoleingenjörsutbildningen.
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \input{inledning.tex}
-
 
 \input{teoretisk_bakgrund.tex}
 
@@ -336,6 +313,6 @@ Programmet. Arbetet är ett led i den treåriga högskoleingenjörsutbildningen.
 \input{bilagor.tex}
 
 
-\clearpage\thispagestyle{empty}\null
+%\clearpage\thispagestyle{empty}\null
 
 \end{document}
