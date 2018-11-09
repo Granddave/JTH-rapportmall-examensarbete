@@ -6,7 +6,7 @@
 % Uppdaterad av David Isaksson 2018:
 % https://github.com/Granddave/JTH-rapportmall-examensarbete
 %
-% Baserad på följande docx (Hämtad 2018-13-02)
+% Baserad på följande docx (Hämtad 2018-02-13)
 % http://ju.se/download/18.448e5a1414f64cc6e183ea5e/1441623803036/Mall+f%C3%B6r+examensarbete.dotx
 % Hämtad från http://ju.se/student/studier/examensarbete-uppsats.html
 %
@@ -21,6 +21,18 @@
 % inte väljer teckenstorlek 12pt. Alternativt kan man ha dubbla
 % kolumner.
 
+\usepackage[margin=34mm]{geometry}
+% Ger något smalare marginaler än standard geometrin på article klassen (ca 36mm).
+
+%\usepackage{showframe}
+% För att se en ram över dokumentet
+
+\usepackage{blindtext}
+% \blindtext genererar lite test-text
+
+
+\usepackage{lmodern}
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 % För riktiga å, ä och ö:
@@ -31,10 +43,22 @@
 % Det räcker ofta, men inte alltid, att bara ange den senare. Det bör
 % räcka att bara ange den första, men blir inte _fullt_ så snyggt.
 
-\usepackage[swedish,english]{babel}
+%\usepackage{pslatex}
+% Kommentera bort för Times new roman-typsnitt
+
+\usepackage[hidelinks]{hyperref}
+% Klickbara länkar
+
+%\usepackage[swedish,english]{babel}
+\usepackage[swedish]{babel}
 % Svensk avstavning (om den är installerad) och svenska rubriker på
 % sådant som LaTeX lägger till: ,
 % innehållsförteckning...
+
+\usepackage{parskip}
+
+\usepackage{verbatim}
+% För comment-environments
 
 \newenvironment{poliabstract}[1]
   {\renewcommand{\abstractname}{#1}\begin{abstract}}
@@ -45,41 +69,51 @@
 % AMS är the American Mathematical Society. De har egna
 % LaTeX-kommandon. De är bra, och jag har ingen koll på vilka
 % kommandon jag använder som kommer från LaTeX och vilka som kommer
-% från AMS, så jag har alltid med den.
-
-\usepackage{ae}
-% När du gör PDF-filer för publicering på Internet eller för att
-% skicka via e-post, bör du använda Type1-fonter (typsnitt). LaTeX
-% använder vanligen bitmapfonter, som ger utmärkt resultat i skrivare,
-% men bedrövligt på skärm. Med ae får du fonter med samma utseende som
-% ordinarie LaTeX, men som också fungerar på bildskärmar. PDF-filer
-% skapar du sedan genom att skriva "dvipdf filnamn" efter att ha kört
-% LaTeX för att få fram en "filnamn.dvi".
-%    Det finns ingen garanti för att alla fonter du använder finns med
-% i ae, och de som inte finns kommer i regel få vanliga bitmapfonter
-% istället. Men det rör sig då om enstaka stycken - kanske
-% sammanfattningen du gjort med "abstract" till exempel - eller någon
-% enstaka variabel. Det mesta blir bra.
+% från AMS
 
 \usepackage{listings}
 % tillåter att formatera kod
 
 \lstset{literate=%
-{Ö}{{\"O}}1
-{Ø}{{\O}}1
-{Ä}{{\"A}}1
-{Å}{{\AA}}1
-{Ü}{{\"U}}1
-{ß}{{\ss}}2
-{ü}{{\"u}}1
-{ä}{{\"a}}1
-{å}{{\aa}}1
-{ö}{{\"o}}1
-{ø}{{\o}}1
-{æ}{{\ae}}1
-{Æ}{{\AE}}1
+    {Ö}{{\"O}}1
+    {Ø}{{\O}}1
+    {Ä}{{\"A}}1
+    {Å}{{\AA}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}2
+    {ü}{{\"u}}1
+    %{ä}{{\"a}}1
+    %{å}{{\aa}}1
+    %{ö}{{\"o}}1
+    {ø}{{\o}}1
+    {æ}{{\ae}}1
+    {Æ}{{\AE}}1
 }
-% Fixar så att åäö och andra tecken fungerar att använda i kodfiler 
+% Fixar så att åäö och andra tecken fungerar att använda i kodfiler
+
+\usepackage{setspace, caption}
+\DeclareCaptionLabelSeparator*{spaced}{\\[2ex]}
+\captionsetup[table]{
+    labelfont={it, bf},
+    textfont=it,
+%    format=plain,
+    justification=justified,
+%    singlelinecheck=false,
+    labelsep=period,%spaced,
+    width=.95\textwidth
+%    skip=0pt
+    }
+\captionsetup[figure]{
+    labelsep=period,
+    labelfont={it, bf},
+    textfont=it,
+    justification=justified,
+    singlelinecheck=false,
+    width=.95\textwidth
+    %font=doublespacing
+    }
+\setlength{\belowcaptionskip}{-5pt}
+
 
 \renewcommand\appendix{\par
   \setcounter{section}{0}
@@ -106,7 +140,12 @@
 % koordinatavskiljare, beroende på om det står något mellanslag
 % efter. Använd aldrig decimalpunkt i icke-engelsk skrift.
 
+\usepackage{tabularx, booktabs}
+% Tabellformatering
+
 \usepackage{color}
+% Färglägg text med ex. \textcolor{red}{Min röda text}
+
 \usepackage{graphicx}
 % Dessa behövs när man inkluderar figurer från xfig, i
 % latex+postscript format (brukar bli snyggast). Använder man vanliga
@@ -115,6 +154,8 @@
 % har rätt storlek när man importerar dem behöver man inte bry sig om
 % skillnaderna.
 
+\usepackage{subcaption}
+% Captions för subfigurer
 
 \usepackage{bbm}
 \newcommand{\N}{\ensuremath{\mathbbm{N}}}
@@ -137,8 +178,14 @@
 % integraler också med ett litet mellanrum mellan d och föregående
 % uttryck.
 
-\setlength\parindent{0pt}
+\setlength{\parindent}{0pt}
 % Tar bort indentering vid ny paragraf
+
+\usepackage{gensymb}
+% Används för att ge tillgång till grader- (°) symbolen.
+
+\usepackage{float}
+%används för korrekt figurplacering
 
 \usepackage{fancyhdr}
 % Detta paket gör att det går att header och footer med, vilket krävs för att hålla sig efter den officiella mallen. 
@@ -153,13 +200,11 @@
 % För att göra texen mer lättläst och avdelad så läggs alltid en ny huvudrubrik (section) på en helt ny sida.
 
 
-
-
 \newcommand{\blankpage}{
-\newpage
-\thispagestyle{empty}
-\mbox{}
-\newpage
+    \newpage
+    \thispagestyle{empty}
+    \mbox{}
+    \newpage
 }
 % Vissa sidor skall vara tomma eftersom att rapporten kommer att vara utskriven dubbelsidigt. för att skapa en helt tom sida anropas det med \blankpage 
 % Det medför en helt tom sida som inte har någon header eller footer.
@@ -171,25 +216,41 @@
 % Varje gång du genererar ett dokument kommer dagens datum att tas fram
 
 
-\usepackage[backend=bibtex,
-style=numeric
-%style=alphabetic
-%style=reading
+%%
+%% Referenser
+%%
+\usepackage[
+  backend = biber,
+  style   = apa,
+  natbib  = true,
+  %url     = true,
+  sorting = none
 ]{biblatex}
 \addbibresource{referenser}
 % Möjlighet att skapa refernslista, med hjälp av BibTex-formatet.
 
+\DeclareLanguageMapping{swedish}{swedish-apa}
+\DefineBibliographyStrings{swedish}{andothers = {et al.}}
+
+
+
+\renewcommand{\UrlFont}{\tt}
+% Url:er får monospace font
+
 \makeindex
 % Innan dokumentet börjar måste vi starta igång makeindex så den har möjlighet att söka igenom dokumentet på sakord innan saklistan genereras i slutet av dokumentet.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dokumentet börjar här %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \pagestyle{empty}
 
-\includegraphics[width=6 cm]{Bilder/JU_logga_stor.jpg}
+\includegraphics[width=7 cm]{Bilder/JU_logga_stor.jpg}
 \vfill
 
 % Titeln på ditt examensarbete
-\textbf{\LARGE \textcolor{red}{Titel på examensarbetet \\ på två rader} }
+\textbf{\Huge \textcolor{red}{Titel på examensarbetet \\ på två rader} }
 \\[0.6cm]
 
 % Undertitel
@@ -198,9 +259,9 @@ style=numeric
 
 
 \textbf{Huvudområde:} \textit{\textcolor{red}{Ämne} } \\
-\textbf{Författare:} \textit{\textcolor{red}{Förnamn Efternamn} }\\
+\textbf{Författare:} \textit{\textcolor{red}{Förnamn Efternamn, Förnamn Efternamn} }\\
 \textbf{Handledare:} \textit{\textcolor{red}{Förnamn Efternamn} }\\
-\textbf{Jönköping} \textcolor{red}{År Månad} % Todo: Fixa så ej hårdkodat
+\textbf{Jönköping} \the\year{} \monthname
 
 
 %%%% Sida två %%%%
@@ -210,7 +271,9 @@ style=numeric
 
 \vspace*{\fill}
 
-Detta examensarbete är utfört vid Tekniska Högskolan i Jönköping inom [se huvudområde på föregående sida]. Författarna svarar själva för framförda åsikter, slutsatser och resultat.\\
+Detta examensarbete är utfört vid Tekniska Högskolan i Jönköping inom
+[se huvudområde på föregående sida].
+Författarna svarar själva för framförda åsikter, slutsatser och resultat. \\[0.5em]
 \begin{tabular}{@{}ll}
 Examinator: & \textcolor{red}{Förnamn Efternamn} \\
 Handledare: & \textcolor{red}{Förnamn Efternamn} \\
@@ -242,43 +305,38 @@ Datum:      & \today
 
 %\fancyfoot[C]{}
 %%\chead{Abstract}
-\chead{\textit Abstract }
+\chead{\textit{Abstract} }
 %\selectlanguage{english}
-%\begin{poliabstract}{Abstract} 
-\textbf{\large{Abstract}}\\
+%\begin{poliabstract}{Abstract}
+\textbf{\large{Abstract}}\\[0.3cm]
 \input{abstract.tex}
 %\end{poliabstract}
 
 \newpage%\blankpage
 
 %%\chead{Sammanfattning}
-%\chead{ \textit Sammanfattning }
+\chead{\textit{Sammanfattning}}
 \selectlanguage{swedish}
 %\begin{poliabstract}{Sammanfattning}
-\textbf{\large{Sammanfattning}}\\
+\textbf{\large{Sammanfattning}}\\[0.3cm]
 \input{sammanfattning.tex}
 %\end{poliabstract}
 
-\newpage%\blankpage
+\newpage
 
 \lhead{ }
 \chead{ \textit {Innehållsförteckning}}
 \rhead{ }
+\renewcommand{\contentsname}{Innehållsförteckning}
 \tableofcontents
-\newpage%\blankpage
-
+\newpage
 
 \newpage
 
 \fancyhead[L]{}
-\fancyhead[C]{\textit \Sectionname}
+\fancyhead[C]{\textit{\Sectionname}}
 \fancyhead[R]{}
-
 \fancyfoot[C]{\thepage}
-
-%\usepackage{titlesec}
-
-
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \input{inledning.tex}
@@ -300,6 +358,7 @@ Datum:      & \today
 \lhead{ }
 \chead{ \textit {Referenser}}
 \rhead{ }
+
 \printbibliography
 
 \printindex
@@ -314,5 +373,6 @@ Datum:      & \today
 
 
 %\clearpage\thispagestyle{empty}\null
+% Tom sistasida
 
 \end{document}
